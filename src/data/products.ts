@@ -1,5 +1,7 @@
 import type { Product, ProductLine } from '../types';
 
+const productPhoto = (fileName: string) => `${import.meta.env.BASE_URL}assets/products/${fileName}`;
+
 export const lines: { id: ProductLine | 'all'; label: string }[] = [
   { id: 'all', label: '전체' },
   { id: 'fruit', label: '과일 토핑' },
@@ -10,7 +12,7 @@ export const lines: { id: ProductLine | 'all'; label: string }[] = [
 export const products: Product[] = [
   {
     id: 'strawberry-whip-cream',
-    photo: '/assets/products/strawberry-whip-cream.webp',
+    photo: productPhoto('strawberry-whip-cream.webp'),
     name: '딸기 생크림 수분크림',
     nameEn: 'Strawberry Whip Cream',
     line: 'fruit',
@@ -28,7 +30,7 @@ export const products: Product[] = [
   },
   {
     id: 'lemon-madeleine-serum',
-    photo: '/assets/products/lemon-madeleine-serum.webp',
+    photo: productPhoto('lemon-madeleine-serum.webp'),
     name: '레몬 마들렌 비타 세럼',
     nameEn: 'Lemon Madeleine Vita Serum',
     line: 'fruit',
@@ -46,7 +48,7 @@ export const products: Product[] = [
   },
   {
     id: 'mint-chocolat-gel',
-    photo: '/assets/products/mint-chocolat-gel.webp',
+    photo: productPhoto('mint-chocolat-gel.webp'),
     name: '민트 쇼콜라 진정 젤',
     nameEn: 'Mint Chocolat Soothing Gel',
     line: 'herb',
@@ -63,7 +65,7 @@ export const products: Product[] = [
   },
   {
     id: 'rosemary-herb-toner',
-    photo: '/assets/products/rosemary-herb-toner.webp',
+    photo: productPhoto('rosemary-herb-toner.webp'),
     name: '로즈마리 허브 토너',
     nameEn: 'Rosemary Herb Toner',
     line: 'herb',
@@ -80,7 +82,7 @@ export const products: Product[] = [
   },
   {
     id: 'vanilla-shortcake-butter',
-    photo: '/assets/products/vanilla-shortcake-butter.webp',
+    photo: productPhoto('vanilla-shortcake-butter.webp'),
     name: '바닐라 쇼트케이크 바디버터',
     nameEn: 'Vanilla Shortcake Body Butter',
     line: 'dessert',
@@ -98,7 +100,7 @@ export const products: Product[] = [
   },
   {
     id: 'blueberry-macaron-lip',
-    photo: '/assets/products/blueberry-macaron-lip.webp',
+    photo: productPhoto('blueberry-macaron-lip.webp'),
     name: '블루베리 마카롱 립 마스크',
     nameEn: 'Blueberry Macaron Lip Mask',
     line: 'dessert',
