@@ -3,6 +3,19 @@ import { useSyncExternalStore } from 'react';
 /** 라이브러리 없이 쓰는 최소한의 History API 라우터 */
 const listeners = new Set<() => void>();
 const notify = () => listeners.forEach((listener) => listener());
+const basePath = import.meta.env.BASE_URL.replace(/\/+$/, '');
+
+function toAppPath(pathname: string) {
+  const normalized = pathname.replace(/\/+$/, '') || '/';
+  if (!basePath) return normalized;
+  if (normalized === basePath) return '/';
+  return normalized.startsWith(`${basePath}/`) ? normalized.slice(basePath.length) || '/' : normalized;
+}
+
+function toBrowserPath(pathname: string) {
+  if (!basePath || pathname === basePath || pathname.startsWith(`${basePath}/`)) return pathname;
+  return pathname === '/' ? `${basePath}/` : `${basePath}${pathname}`;
+}
 
 window.addEventListener('popstate', notify);
 
@@ -12,13 +25,15 @@ function subscribe(listener: () => void) {
 }
 
 export function usePathname() {
-  return useSyncExternalStore(subscribe, () => window.location.pathname.replace(/\/+$/, '') || '/');
+  return useSyncExternalStore(subscribe, () => toAppPath(window.location.pathname));
 }
 
 export function navigate(to: string) {
   const url = new URL(to, window.location.href);
-  history.pushState(null, '', url.pathname + url.hash);
-  if (url.pathname === window.location.pathname && url.hash) {
+  const appPath = toAppPath(url.pathname);
+  const browserPath = toBrowserPath(appPath);
+  history.pushState(null, '', browserPath + url.hash);
+  if (browserPath === window.location.pathname && url.hash) {
     // 같은 페이지 안 앵커는 부드럽게 이동만 한다
     document.getElementById(url.hash.slice(1))?.scrollIntoView({ behavior: 'smooth' });
     return;
