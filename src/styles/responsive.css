@@ -1,0 +1,162 @@
+@media (max-width: 1080px) {
+  .product-grid,
+  .review-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lab__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .lab__stage {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    width: min(460px, 100%);
+    margin: 0 auto 20px;
+  }
+}
+
+@media (max-width: 860px) {
+  .site-header__nav {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 28px;
+    background: rgba(255, 250, 246, 0.96);
+    box-shadow: var(--clay);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+  }
+
+  .is-open .site-header__nav {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .site-header__nav a {
+    padding: 14px 18px;
+    font-size: 18px;
+  }
+
+  .menu-btn {
+    display: grid;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 120px;
+    text-align: center;
+  }
+
+  .hero__copy {
+    margin: 0 auto;
+  }
+
+  .hero__lead {
+    margin: 0 auto;
+  }
+
+  .hero__actions,
+  .hero__facts {
+    justify-content: center;
+  }
+
+  .hero__view {
+    position: relative;
+    inset: auto;
+    height: 62svh;
+    min-height: 400px;
+    margin-top: 12px;
+  }
+
+  .hero__scroll {
+    display: none;
+  }
+
+  .routine__inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .routine__sticky {
+    top: 80px;
+    z-index: 1;
+    height: 46svh;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 240, 227, 0.92);
+  }
+
+  .routine__steps {
+    gap: 30vh;
+    padding: 10vh 0 30vh;
+  }
+
+  .newsletter__card {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer__top {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .site-footer__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .product-grid,
+  .review-grid,
+  .lab__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__facts {
+    gap: 8px;
+  }
+
+  .hero__facts li {
+    min-width: 0;
+    flex: 1;
+    padding: 12px;
+  }
+
+  .hero__facts strong {
+    font-size: 22px;
+  }
+
+  .logo__text small {
+    display: none;
+  }
+
+  .collection,
+  .lab,
+  .routine,
+  .reviews {
+    padding-top: 90px;
+    padding-bottom: 80px;
+  }
+
+  .routine-step {
+    padding: 26px;
+  }
+
+  .newsletter__form {
+    flex-direction: column;
+    border-radius: 28px;
+  }
+
+  .newsletter__form input {
+    min-height: 48px;
+  }
+
+  .site-footer__bottom {
+    flex-direction: column;
+  }
+}

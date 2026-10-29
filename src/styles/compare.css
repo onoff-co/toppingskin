@@ -1,0 +1,141 @@
+/* ---------- 3D ↔ 실물 비교 슬라이더 ---------- */
+.compare {
+  position: relative;
+  width: min(580px, 100%);
+  aspect-ratio: 8 / 9;
+  margin: 0 auto;
+  border-radius: 44px;
+  background: var(--tint);
+  box-shadow: var(--clay);
+  overflow: hidden;
+  user-select: none;
+}
+
+.compare__view {
+  position: absolute;
+  inset: 0;
+}
+
+/* 3D 캔버스(z-index 5)보다 위에 올라와야 사진이 모델을 덮는다 */
+.compare__photo,
+.compare__tag,
+.compare__handle,
+.compare__range {
+  position: absolute;
+  z-index: 6;
+}
+
+.compare__photo {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: inset(0 0 0 var(--pos));
+  pointer-events: none;
+}
+
+.compare__tag {
+  top: 20px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 253, 250, 0.88);
+  box-shadow: 0 6px 14px -8px rgba(59, 38, 34, 0.4);
+  font-size: 13px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.compare__tag--left {
+  left: 20px;
+}
+
+.compare__tag--right {
+  right: 20px;
+  color: var(--accent);
+}
+
+.compare__handle {
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 3px;
+  margin-left: -1.5px;
+  background: #fff;
+  box-shadow: 0 0 12px rgba(59, 38, 34, 0.25);
+  pointer-events: none;
+}
+
+.compare__handle i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: var(--clay);
+  transform: translate(-50%, -50%);
+}
+
+.compare__handle i::before,
+.compare__handle i::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-block: 7px solid transparent;
+  transform: translateY(-50%);
+}
+
+.compare__handle i::before {
+  left: 13px;
+  border-right: 9px solid var(--accent);
+}
+
+.compare__handle i::after {
+  right: 13px;
+  border-left: 9px solid var(--accent);
+}
+
+/* 투명한 range 입력이 마우스·터치·키보드 조작을 모두 맡는다 */
+.compare__range {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+.compare__range:focus-visible + .compare__handle,
+.compare:has(.compare__range:focus-visible) .compare__handle i {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.compare-note {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .compare {
+    border-radius: 30px;
+  }
+
+  .compare__tag {
+    top: 14px;
+    font-size: 12px;
+  }
+
+  .compare__tag--left {
+    left: 14px;
+  }
+
+  .compare__tag--right {
+    right: 14px;
+  }
+}

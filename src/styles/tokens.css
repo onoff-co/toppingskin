@@ -1,0 +1,25 @@
+:root {
+  color-scheme: light;
+  --cream: #fff6ef;
+  --cream-deep: #ffeadf;
+  --paper: #fffdfa;
+  --strawberry: #ff5d7a;
+  --berry-deep: #d9264f;
+  --peach: #ffb38a;
+  --lemon: #ffd84d;
+  --matcha: #8cc084;
+  --herb-deep: #2f6b4f;
+  --choco: #4a2c25;
+  --ink: #3b2622;
+  --muted: #8a716a;
+  --line: #f1dcd2;
+  --sans: "Noto Sans KR", "Apple SD Gothic Neo", Arial, sans-serif;
+  --round: "Gowun Dodum", "Noto Sans KR", sans-serif;
+  --display: "Fraunces", Georgia, serif;
+  --content-pad: clamp(18px, 6vw, 96px);
+  --radius-lg: 36px;
+  --radius-md: 22px;
+  /* 클레이(말랑한 3D) 질감: 바깥 그림자 + 안쪽 하이라이트 · 음영 */
+  --clay: 0 22px 40px -22px rgba(201, 84, 92, 0.45), inset 0 -10px 18px rgba(214, 120, 120, 0.12), inset 0 8px 14px rgba(255, 255, 255, 0.9);
+  --clay-strong: 0 14px 0 -4px rgba(176, 30, 66, 0.9), 0 26px 30px -10px rgba(217, 38, 79, 0.45), inset 0 -6px 12px rgba(140, 10, 40, 0.25), inset 0 6px 10px rgba(255, 255, 255, 0.45);
+}
